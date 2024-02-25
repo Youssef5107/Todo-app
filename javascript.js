@@ -2,6 +2,8 @@ var input = document.querySelector(".task-input");
 var tableContent = localStorage.getItem("tasks") || "";
 var tableBody = document.querySelector("tbody");
 var buttonContainer = document.querySelector(".button-container");
+var itemsleft = document.querySelector(".items-left");
+var noOfItems = 0;
 var newRow = "";
 
 if (tableBody) {
@@ -9,6 +11,7 @@ if (tableBody) {
 }
 
 input.addEventListener("keydown", function (pressedKey) {
+	console.log(noOfItems)
 	if (pressedKey.key === "Enter") {
 		newRow = `
       <tr>
@@ -20,6 +23,10 @@ input.addEventListener("keydown", function (pressedKey) {
 	  <hr>
     `;
 
+		noOfItems = noOfItems + 1;
+		itemsleft.innerHTML = noOfItems;
+
+
 		tableContent += newRow;
 		tableBody.innerHTML = tableContent;
 		localStorage.setItem("tasks", tableContent);
@@ -27,6 +34,7 @@ input.addEventListener("keydown", function (pressedKey) {
 		input.value = "";
 	}
 });
+
 
 function deleteTasks() {
 	tableBody.innerHTML = ``;

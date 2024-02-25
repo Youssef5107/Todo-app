@@ -42,3 +42,54 @@
 	font-family: Josefin-Sans-bold;
 	src: url(fonts/Josefin_Sans/static/JosefinSans-Bold.ttf);
 }
+
+body {
+	display: flex;
+	justify-content: center;
+	background-image: url(images/bg-desktop-light.jpg);
+	background-repeat: no-repeat;
+	height: 100vh;
+	margin: 0px;
+	padding: 0px;
+}
+
+header {
+	margin: 100px 40px 0px;
+	max-width: 550px;
+	width: 100%;
+}
+
+.header-main-area {
+	display: flex;
+}
+
+.main-title {
+	color: white;
+	font-family: Josefin-Sans-medium;
+	font-size: 45px;
+	letter-spacing: 5px;
+}
+
+.theme-area {
+	display: flex;
+	flex-grow: 1;
+	justify-content: end;
+}
+
+.dark-theme-img {
+	width: 30px;
+	height: 30px;
+}
+
+.task-input-area {
+	margin: 30px 40px 0px;
+}
+
+.task-input {
+	padding: 20px 0px;
+	border-radius: 5px;
+	border: 0px;
+	max-width: 550px;
+	width: 100%;
+
+}

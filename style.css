@@ -4,8 +4,6 @@
 	--Bright-Blue: hsl(220, 98%, 61%);
 	--Check-Background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 
-
-
 	/* ### Light Theme */
 
 	--Very-Light-Gray: hsl(0, 0%, 98%);
@@ -44,8 +42,6 @@
 }
 
 body {
-	display: flex;
-	justify-content: center;
 	background-image: url(images/bg-desktop-light.jpg);
 	background-repeat: no-repeat;
 	height: 100vh;
@@ -54,9 +50,13 @@ body {
 }
 
 header {
-	margin: 100px 40px 0px;
+	margin: 100px auto;
 	max-width: 550px;
 	width: 100%;
+}
+
+.header-content-area {
+	/* margin: auto 40px; */
 }
 
 .header-main-area {
@@ -92,4 +92,16 @@ header {
 	max-width: 550px;
 	width: 100%;
 
+}
+
+table {
+	position: relative;
+	top: -65px;
+	background-color: white;
+	border-radius: 5px;
+	max-width: 550px;
+	width: 100%;
+	margin: auto;
+	box-shadow: 12px 7px 20px 6px rgb(57 75 84 / 8%);
+	min-height: 100px;
 }

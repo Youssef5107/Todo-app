@@ -17,7 +17,10 @@ input.addEventListener("keydown", function (pressedKey) {
 		newRow = `
 		<div>
           	<input class="checkbox-input" type="checkbox" class="checkbox" name="" id="">
-			<span class="entered-task">${input.value}<span>      
+			<span class="entered-task">${input.value}<span>  
+			<div class="close-btn-container">
+				<img class="close-btn" src="images/icon-cross.svg" alt="">
+			</div>    
        </div>
 	  <hr>
     `;

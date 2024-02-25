@@ -127,6 +127,12 @@ header {
 
 .entered-task {}
 
+.close-btn-container {
+	display: flex;
+	flex-grow: 1;
+	justify-content: flex-end;
+}
+
 .tasks-footer {
 	display: flex
 }

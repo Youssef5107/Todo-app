@@ -64,6 +64,10 @@ body {
 	transition: 1s;
 }
 
+.dark .entered-task {
+	background: transparent;
+}
+
 
 /* end theme */
 
@@ -150,7 +154,7 @@ header {
 .entered-task {
 	margin-left: 10px;
 	font-family: Josefin-Sans-light;
-	transition: .3s;
+	transition: .1s;
 }
 
 .close-btn-container {
@@ -171,7 +175,7 @@ header {
 	margin: 10px 5px;
 	background-color: transparent;
 	border: 0px;
-	transition: .2s;
+	transition: .1s;
 }
 
 .options-container {

@@ -17,7 +17,7 @@ input.addEventListener("keydown", function (pressedKey) {
 		newRow = `
 		<div class="added-task">
           	<input class="checkbox-input" type="checkbox" class="checkbox" name="" id="">
-			<span class="entered-task">${input.value}<span>  
+			<div class="entered-task">${input.value}</div>  
 			<div class="close-btn-container">
 				<img class="close-btn" src="images/icon-cross.svg" alt="">
 			</div>    
@@ -29,6 +29,7 @@ input.addEventListener("keydown", function (pressedKey) {
 		tableContent += newRow;
 		tableBody.innerHTML = tableContent;
 		localStorage.setItem("tasks", tableContent);
+		localStorage.setItem("noItems", noOfItems);
 		input.value = "";
 	}
 });
@@ -62,6 +63,28 @@ for (let i = 0; i < taskAreas.length; i++) {
 		}
 		localStorage.setItem("tasks", tableContent); // Save the updated tasks to local storage
 	});
+}
+
+var optionBtns = document.querySelectorAll(".option");
+for (let i = 0; i < optionBtns.length; i++) {
+	optionBtns[i].addEventListener("mouseover", () => {
+		if (!optionBtns[i].classList.contains("active-option"))
+			optionBtns[i].style.color = "orange";
+	});
+	optionBtns[i].addEventListener("mouseout", () => {
+		if (!optionBtns[i].classList.contains("active-option"))
+			optionBtns[i].style.color = "hsl(234, 11%, 52%)";
+	});
+}
+
+function selectedOption(selectedBtn) {
+	var optionBtns = document.querySelectorAll(".option");
+	for (let i = 0; i < optionBtns.length; i++) {
+		optionBtns[i].classList.remove("active-option")
+		optionBtns[i].style.color = "hsl(234, 11%, 52%)"
+	}
+	selectedBtn.classList.add("active-option")
+	selectedBtn.style.color = "hsl(220, 98%, 61%)";
 }
 
 

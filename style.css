@@ -47,7 +47,25 @@ body {
 	height: 87vh;
 	margin: 0px;
 	padding: 0px;
+	transition: 1s;
 }
+
+/* start theme */
+.dark {
+	background-color: var(--Very-Dark-Blue);
+	transition: 1s;
+}
+
+.dark .tasks-container,
+.dark .task-input,
+.dark .entered-task {
+	color: white;
+	background-color: var(--Very-Dark-Desaturated-Blue);
+	transition: 1s;
+}
+
+
+/* end theme */
 
 header {
 	margin: 100px auto;
@@ -81,7 +99,7 @@ header {
 
 .active-theme {
 	opacity: 1;
-	transition: .5s;
+	transition: 1s;
 	position: relative;
 }
 
@@ -96,6 +114,7 @@ header {
 	max-width: 550px;
 	width: 100%;
 	font-family: Josefin-Sans-medium;
+	transition: 1s;
 }
 
 .tasks-container {
@@ -109,6 +128,7 @@ header {
 	margin: auto;
 	box-shadow: 12px 7px 20px 6px rgb(57 75 84 / 8%);
 	min-height: 50px;
+	transition: 1s;
 }
 
 .added-task {
@@ -121,7 +141,7 @@ header {
 .checkbox {
 	width: 20px;
 	height: 20px;
-	border: 2px solid #ccc;
+	border: 1px solid #ccc;
 	border-radius: 50%;
 	cursor: pointer;
 	transition: background-color 0.2s ease-in-out;
@@ -130,6 +150,7 @@ header {
 .entered-task {
 	margin-left: 10px;
 	font-family: Josefin-Sans-light;
+	transition: .3s;
 }
 
 .close-btn-container {

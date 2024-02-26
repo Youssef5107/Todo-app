@@ -9,9 +9,8 @@ itemsleft.innerHTML = itemsNo; // Display noOfItems
 
 input.addEventListener("keydown", function (pressedKey) {
 	if (pressedKey.key === "Enter") {
-
 		itemsNo = Number(localStorage.getItem("itemsNo")) || 0; // Retrieve itemsNo before updating
-		noOfItems = itemsNo + 1;
+		var noOfItems = itemsNo + 1;
 		localStorage.setItem("itemsNo", noOfItems); // Save itemsNo
 
 		itemsleft.innerHTML = noOfItems; // Display noOfItems
@@ -34,29 +33,63 @@ input.addEventListener("keydown", function (pressedKey) {
 });
 
 var taskAreas = document.querySelectorAll(".added-task");
+var closeBtns = document.querySelectorAll(".close-btn-container");
+
 
 for (let i = 0; i < taskAreas.length; i++) {
 	const hoveredTask = taskAreas[i];
 	const closeBtn = hoveredTask.querySelector(".close-btn-container");
-
-	// ... (hover and click event handlers for close button)
-
+	hoveredTask.addEventListener("mouseover", () => {
+		closeBtn.style.opacity = "1";
+		closeBtn.style.transition = ".5s"
+	});
+	hoveredTask.addEventListener("mouseout", () => {
+		closeBtn.style.opacity = "0";
+		closeBtn.style.transition = ".2s"
+	});
 	closeBtn.addEventListener("click", function () {
-		hoveredTask.remove();
+		hoveredTask.remove(); // Remove the task area from the DOM
 		noOfItems = noOfItems - 1;
-		itemsleft.innerHTML = noOfItems; // Update items left count
+		itemsleft.innerHTML = noOfItems;
 
-		// ... (update tasks in local storage)
+		// Update the table content in local storage
+		content = ""; // Clear the current table content
+		var remainingTasks = document.querySelectorAll(".added-task"); // Get the remaining tasks
+		for (let i = 0; i < remainingTasks.length; i++) {
+			content += remainingTasks[i].outerHTML; // Get the HTML of each remaining task
+		}
+		localStorage.setItem("tasks", content); // Save the updated tasks to local storage
 	});
 }
 
-// ... (option button logic)
+var optionBtns = document.querySelectorAll(".option");
+for (let i = 0; i < optionBtns.length; i++) {
+	optionBtns[i].addEventListener("mouseover", () => {
+		if (!optionBtns[i].classList.contains("active-option"))
+			optionBtns[i].style.color = "orange";
+	});
+	optionBtns[i].addEventListener("mouseout", () => {
+		if (!optionBtns[i].classList.contains("active-option"))
+			optionBtns[i].style.color = "hsl(234, 11%, 52%)";
+	});
+}
+
+function selectedOption(selectedBtn) {
+	var optionBtns = document.querySelectorAll(".option");
+	for (let i = 0; i < optionBtns.length; i++) {
+		optionBtns[i].classList.remove("active-option")
+		optionBtns[i].style.color = "hsl(234, 11%, 52%)"
+	}
+	selectedBtn.classList.add("active-option")
+	selectedBtn.style.color = "hsl(220, 98%, 61%)";
+}
+
+
 
 function deleteTasks() {
-	contentContainer.innerHTML = "";
+	contentContainer.innerHTML = ``;
 	content = "";
 	localStorage.setItem("tasks", "");
 	noOfItems = 0;
-	localStorage.setItem("itemsNo", 0); // Save itemsNo
 	itemsleft.innerHTML = noOfItems;
 }

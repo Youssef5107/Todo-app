@@ -1,8 +1,8 @@
 var input = document.querySelector(".task-input");
 // 
-var tableContent = localStorage.getItem("tasks");
-var tableBody = document.querySelector(".tasks-area");
-tableBody.innerHTML = tableContent;
+var content = localStorage.getItem("tasks");
+var contentContainer = document.querySelector(".tasks-area");
+contentContainer.innerHTML = content;
 // 
 var buttonContainer = document.querySelector(".button-container");
 // 
@@ -26,9 +26,9 @@ input.addEventListener("keydown", function (pressedKey) {
 
 		noOfItems = noOfItems + 1;
 		itemsleft.innerHTML = noOfItems;
-		tableContent += newRow;
-		tableBody.innerHTML = tableContent;
-		localStorage.setItem("tasks", tableContent);
+		content += newRow;
+		contentContainer.innerHTML = content;
+		localStorage.setItem("tasks", content);
 		localStorage.setItem("noItems", noOfItems);
 		input.value = "";
 	}
@@ -56,12 +56,12 @@ for (let i = 0; i < taskAreas.length; i++) {
 		itemsleft.innerHTML = noOfItems;
 
 		// Update the table content in local storage
-		tableContent = ""; // Clear the current table content
+		content = ""; // Clear the current table content
 		var remainingTasks = document.querySelectorAll(".added-task"); // Get the remaining tasks
 		for (let i = 0; i < remainingTasks.length; i++) {
-			tableContent += remainingTasks[i].outerHTML; // Get the HTML of each remaining task
+			content += remainingTasks[i].outerHTML; // Get the HTML of each remaining task
 		}
-		localStorage.setItem("tasks", tableContent); // Save the updated tasks to local storage
+		localStorage.setItem("tasks", content); // Save the updated tasks to local storage
 	});
 }
 
@@ -90,8 +90,8 @@ function selectedOption(selectedBtn) {
 
 
 function deleteTasks() {
-	tableBody.innerHTML = ``;
-	tableContent = "";
+	contentContainer.innerHTML = ``;
+	content = "";
 	localStorage.setItem("tasks", "");
 	noOfItems = 0;
 	itemsleft.innerHTML = noOfItems;

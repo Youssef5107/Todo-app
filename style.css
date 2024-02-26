@@ -157,8 +157,17 @@ header {
 	justify-content: end;
 }
 
+.active-option {
+	color: var(--Bright-Blue);
+}
+
 .clear-btn-container {
 	display: flex;
 	flex-grow: 1;
 	justify-content: end;
+}
+
+.clear-btn:hover {
+	color: orange;
+	transition: .5s;
 }

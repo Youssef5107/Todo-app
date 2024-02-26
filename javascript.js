@@ -1,7 +1,11 @@
-function theme(clickedThemeBtn) {
-	document.querySelector("body").classList.add("dark");
+function theme() {
+	var body = document.querySelector("body")
+	body.classList.toggle("dark");
+	if (body.classList.contains("dark"))
+		body.style.backgroundImage = "url(images/bg-desktop-dark.jpg)"
+	else
+		body.style.backgroundImage = "url(images/bg-desktop-light.jpg)"
 	var ModeBtn = document.querySelectorAll(".theme-btn");
-	// for (i = 0; i < ModeBtn.length; i++) {}
 	if (ModeBtn[0].classList.contains("active-theme")) {
 		ModeBtn[0].classList.remove("active-theme");
 		ModeBtn[1].classList.add("active-theme");

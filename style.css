@@ -110,12 +110,6 @@ header {
 	padding: 5px 0px;
 }
 
-.checkbox-container {
-	display: flex;
-	/* Allow stacking checkbox and label horizontally */
-	align-items: center;
-}
-
 .checkbox {
 	width: 20px;
 	height: 20px;

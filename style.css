@@ -110,20 +110,20 @@ header {
 	padding: 5px 0px;
 }
 
-.checkbox-input {
-	width: 1.3em;
-	height: 1.3em;
-	background-color: white;
-	border-radius: 50%;
-	vertical-align: middle;
-	border: 1px solid #ddd;
-	appearance: none;
-	-webkit-appearance: none;
-	outline: none;
-	cursor: pointer;
+.checkbox-container {
+	display: flex;
+	/* Allow stacking checkbox and label horizontally */
+	align-items: center;
 }
 
-.checkbox-input:checked {}
+.checkbox {
+	width: 20px;
+	height: 20px;
+	border: 2px solid #ccc;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out;
+}
 
 .entered-task {
 	margin-left: 10px;

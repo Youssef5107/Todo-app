@@ -16,7 +16,7 @@ input.addEventListener("keydown", function (pressedKey) {
 
 		var newRow = `
         <div class="added-task">
-            <input class="checkbox-input" type="checkbox" class="checkbox" name="" id="">
+            <div role="checkbox" class="checkbox-input checkbox"></div>
             <div class="entered-task">${input.value}</div>  
             <div class="close-btn-container">
                 <img class="close-btn" src="images/icon-cross.svg" alt="">

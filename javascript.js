@@ -4,16 +4,15 @@ var contentContainer = document.querySelector(".tasks-area");
 contentContainer.innerHTML = content;
 var buttonContainer = document.querySelector(".button-container");
 var itemsleft = document.querySelector(".items-left");
-var itemsNo = Number(localStorage.getItem("itemsNo")) || 0; // Retrieve itemsNo before updating
-itemsleft.innerHTML = itemsNo; // Display noOfItems
+var itemsNo = Number(localStorage.getItem("itemsNo")) || 0;
+itemsleft.innerHTML = itemsNo;
 
 input.addEventListener("keydown", function (pressedKey) {
-	if (pressedKey.key === "Enter") {
-		itemsNo = Number(localStorage.getItem("itemsNo")) || 0; // Retrieve itemsNo before updating
+	if (pressedKey.key === "Enter" && input.value != "") {
+		itemsNo = Number(localStorage.getItem("itemsNo")) || 0;
 		var noOfItems = itemsNo + 1;
-		localStorage.setItem("itemsNo", noOfItems); // Save itemsNo
-
-		itemsleft.innerHTML = noOfItems; // Display noOfItems
+		localStorage.setItem("itemsNo", noOfItems);
+		itemsleft.innerHTML = noOfItems;
 
 		var newRow = `
         <div class="added-task">
@@ -84,13 +83,11 @@ function selectedOption(selectedBtn) {
 	selectedBtn.style.color = "hsl(220, 98%, 61%)";
 }
 
-
-
 function deleteTasks() {
 	contentContainer.innerHTML = ``;
 	content = "";
 	localStorage.setItem("tasks", "");
 	noOfItems = 0;
-	localStorage.setItem("itemsNo", noOfItems); // Save itemsNo	
+	localStorage.setItem("itemsNo", noOfItems);
 	itemsleft.innerHTML = noOfItems;
 }

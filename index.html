@@ -30,9 +30,9 @@
 		<div class="tasks-footer">
 			<div class="items-left"><span class="items-left">0</span> items left</div>
 			<div class="options-container">
-				<button class="option active-option">All</button>
-				<button class="option">Active</button>
-				<button class="option">Completed</button>
+				<button onclick="selectedOption(this)" class="option active-option">All</button>
+				<button onclick="selectedOption(this)" class="option">Active</button>
+				<button onclick="selectedOption(this)" class="option">Completed</button>
 			</div>
 			<div class="clear-btn-container">
 				<button onclick="deleteTasks()" class="clear-btn">Clear All</button>

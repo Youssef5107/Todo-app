@@ -43,12 +43,16 @@ if (taskAreas) {
 		var hoveredTask = taskAreas[i];
 		const closeBtn = hoveredTask.querySelector(".close-btn-container");
 		hoveredTask.addEventListener("mouseover", () => {
-			closeBtn.style.display = "flex";
-			console.log("hovered");
+			closeBtn.style.opacity = "1";
+			closeBtn.style.transition = ".5s"
 		});
+		hoveredTask.addEventListener("mouseout", () => {
+			closeBtn.style.opacity = "0";
+			closeBtn.style.transition = ".2s"
+		});
+
 	}
 }
-
 
 function deleteTasks() {
 	tableBody.innerHTML = ``;

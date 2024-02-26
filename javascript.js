@@ -15,7 +15,7 @@ var noOfItems = 0;
 input.addEventListener("keydown", function (pressedKey) {
 	if (pressedKey.key === "Enter") {
 		newRow = `
-		<div>
+		<div class="added-task">
           	<input class="checkbox-input" type="checkbox" class="checkbox" name="" id="">
 			<span class="entered-task">${input.value}<span>  
 			<div class="close-btn-container">
@@ -33,6 +33,21 @@ input.addEventListener("keydown", function (pressedKey) {
 		input.value = "";
 	}
 });
+
+
+var taskAreas = document.querySelectorAll(".added-task");
+var closeBtns = document.querySelectorAll(".close-btn-container");
+
+if (taskAreas) {
+	for (let i = 0; i < taskAreas.length; i++) {
+		var hoveredTask = taskAreas[i];
+		const closeBtn = hoveredTask.querySelector(".close-btn-container");
+		hoveredTask.addEventListener("mouseover", () => {
+			closeBtn.style.display = "flex";
+			console.log("hovered");
+		});
+	}
+}
 
 
 function deleteTasks() {

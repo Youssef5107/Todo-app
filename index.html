@@ -25,11 +25,18 @@
 	</header>
 	<div class="tasks-container">
 		<div class="tasks-area"></div>
-
+		<hr>
+		<!-- //////////////////////////////////////////////////////////////// -->
 		<div class="tasks-footer">
-			<button onclick="deleteTasks()" class="clear-btn">Clear All</button>
-
-			<div><span class="items-left">0</span> items left</div>
+			<div class="items-left"><span class="items-left">0</span> items left</div>
+			<div class="options-container">
+				<button class="option active-option">All</button>
+				<button class="option">Active</button>
+				<button class="option">Completed</button>
+			</div>
+			<div class="clear-btn-container">
+				<button onclick="deleteTasks()" class="clear-btn">Clear All</button>
+			</div>
 		</div>
 	</div>
 

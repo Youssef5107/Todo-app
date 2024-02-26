@@ -91,5 +91,6 @@ function deleteTasks() {
 	content = "";
 	localStorage.setItem("tasks", "");
 	noOfItems = 0;
+	localStorage.setItem("itemsNo", noOfItems); // Save itemsNo	
 	itemsleft.innerHTML = noOfItems;
 }

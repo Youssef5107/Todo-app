@@ -22,7 +22,6 @@ input.addEventListener("keydown", function (pressedKey) {
 				<img class="close-btn" src="images/icon-cross.svg" alt="">
 			</div>    
        </div>
-	  <hr>
     `;
 
 		noOfItems = noOfItems + 1;
@@ -38,21 +37,34 @@ input.addEventListener("keydown", function (pressedKey) {
 var taskAreas = document.querySelectorAll(".added-task");
 var closeBtns = document.querySelectorAll(".close-btn-container");
 
-if (taskAreas) {
-	for (let i = 0; i < taskAreas.length; i++) {
-		var hoveredTask = taskAreas[i];
-		const closeBtn = hoveredTask.querySelector(".close-btn-container");
-		hoveredTask.addEventListener("mouseover", () => {
-			closeBtn.style.opacity = "1";
-			closeBtn.style.transition = ".5s"
-		});
-		hoveredTask.addEventListener("mouseout", () => {
-			closeBtn.style.opacity = "0";
-			closeBtn.style.transition = ".2s"
-		});
 
-	}
+for (let i = 0; i < taskAreas.length; i++) {
+	const hoveredTask = taskAreas[i];
+	const closeBtn = hoveredTask.querySelector(".close-btn-container");
+	hoveredTask.addEventListener("mouseover", () => {
+		closeBtn.style.opacity = "1";
+		closeBtn.style.transition = ".5s"
+	});
+	hoveredTask.addEventListener("mouseout", () => {
+		closeBtn.style.opacity = "0";
+		closeBtn.style.transition = ".2s"
+	});
+	closeBtn.addEventListener("click", function () {
+		hoveredTask.remove(); // Remove the task area from the DOM
+		noOfItems = noOfItems - 1;
+		itemsleft.innerHTML = noOfItems;
+
+		// Update the table content in local storage
+		tableContent = ""; // Clear the current table content
+		var remainingTasks = document.querySelectorAll(".added-task"); // Get the remaining tasks
+		for (let i = 0; i < remainingTasks.length; i++) {
+			tableContent += remainingTasks[i].outerHTML; // Get the HTML of each remaining task
+		}
+		localStorage.setItem("tasks", tableContent); // Save the updated tasks to local storage
+	});
 }
+
+
 
 function deleteTasks() {
 	tableBody.innerHTML = ``;

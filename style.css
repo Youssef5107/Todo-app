@@ -128,7 +128,7 @@ header {
 .entered-task {}
 
 .close-btn-container {
-	display: flex;
+	display: none;
 	flex-grow: 1;
 	justify-content: flex-end;
 }

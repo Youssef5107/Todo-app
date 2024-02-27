@@ -34,7 +34,7 @@ input.addEventListener("keydown", function (pressedKey) {
 
 		var newRow = `
         <div class="added-task">
-			<input type="checkbox" class="input-checkbox">
+			<input onclick="chekcboxFun()" type="checkbox" class="input-checkbox">
             <div class="entered-task">${input.value}</div>  
             <div class="close-btn-container">
                 <img class="close-btn" src="images/icon-cross.svg" alt="">
@@ -81,6 +81,39 @@ function whenHover() {
 }
 
 whenHover()
+
+function chekcboxFun() {
+	var body = document.querySelector("body");
+	var checkbox = document.querySelectorAll(".input-checkbox");
+	var task = document.querySelectorAll(".entered-task");
+	if (body.classList.contains("dark")) {
+		for (i = 0; i < checkbox.length; i++) {
+			if (checkbox[i].checked) {
+				task[i].style.color = "hsl(236, 9%, 61%)";
+				task[i].style.textDecoration = "line-through";
+			}
+			else {
+				task[i].style.color = "white";
+				task[i].style.textDecoration = "none";
+			}
+		}
+	}
+	else {
+		for (i = 0; i < checkbox.length; i++) {
+			if (checkbox[i].checked) {
+				task[i].style.color = "hsl(235, 19%, 35%)";
+				task[i].style.textDecoration = "line-through";
+			}
+			else {
+				task[i].style.color = "hsl(236, 9%, 61%)";
+				task[i].style.textDecoration = "none";
+			}
+
+		}
+	}
+}
+
+
 var optionBtns = document.querySelectorAll(".option");
 for (let i = 0; i < optionBtns.length; i++) {
 	optionBtns[i].addEventListener("mouseover", () => {

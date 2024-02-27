@@ -22,7 +22,7 @@ var content = localStorage.getItem("tasks") || "";
 var contentContainer = document.querySelector(".tasks-area");
 contentContainer.innerHTML = content;
 var buttonContainer = document.querySelector(".button-container");
-var itemsleft = document.querySelector(".items-left");
+var itemsleft = document.querySelector(".items-left"); xr
 var noOfItems;
 var itemsNo = Number(localStorage.getItem("itemsNo")) || 0;
 itemsleft.innerHTML = itemsNo;
@@ -118,7 +118,6 @@ function chekcboxFun() {
 	}
 }
 
-
 var optionBtns = document.querySelectorAll(".option");
 for (let i = 0; i < optionBtns.length; i++) {
 	optionBtns[i].addEventListener("mouseover", () => {
@@ -148,11 +147,8 @@ function selectAll() {
 function selectActive() {
 	var addedTask = document.querySelectorAll(".added-task");
 	for (i = 0; i < addedTask.length; i++) {
-		if (addedTask[i].nextElementSibling) {
-			const nextCheckbox = addedTask[i].nextElementSibling.querySelector(".input-checkbox");
-			if (!nextCheckbox.checked) {
-				addedTask[i].style.display = "none";
-			}
+		if (addedTask[i].querySelector(".input-checkbox").checked) {
+			addedTask[i].style.display = "none";
 		}
 	}
 }
@@ -160,11 +156,8 @@ function selectActive() {
 function selectCompleted() {
 	var addedTask = document.querySelectorAll(".added-task");
 	for (i = 0; i < addedTask.length; i++) {
-		if (addedTask[i].nextElementSibling) {
-			const nextCheckbox = addedTask[i].nextElementSibling.querySelector(".input-checkbox");
-			if (nextCheckbox.checked) {
-				addedTask[i].style.display = "none";
-			}
+		if (!addedTask[i].querySelector(".input-checkbox").checked) {
+			addedTask[i].style.display = "none";
 		}
 	}
 }

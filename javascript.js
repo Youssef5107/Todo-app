@@ -16,6 +16,7 @@ function theme() {
 	}
 }
 
+var body = document.querySelector("body");
 var input = document.querySelector(".task-input");
 var content = localStorage.getItem("tasks") || "";
 var contentContainer = document.querySelector(".tasks-area");
@@ -84,10 +85,10 @@ function whenHover() {
 
 whenHover()
 
+var checkbox = document.querySelectorAll(".input-checkbox");
+var task = document.querySelectorAll(".entered-task");
+
 function chekcboxFun() {
-	var body = document.querySelector("body");
-	var checkbox = document.querySelectorAll(".input-checkbox");
-	var task = document.querySelectorAll(".entered-task");
 	if (body.classList.contains("dark")) {
 		for (i = 0; i < checkbox.length; i++) {
 			if (checkbox[i].checked) {
@@ -138,6 +139,34 @@ function selectedOption(selectedBtn) {
 	}
 	selectedBtn.classList.add("active-option")
 	selectedBtn.style.color = "hsl(220, 98%, 61%)";
+}
+
+function selectAll() {
+	contentContainer.innerHTML = content;
+}
+
+function selectActive() {
+	var addedTask = document.querySelectorAll(".added-task");
+	for (i = 0; i < addedTask.length; i++) {
+		if (addedTask[i].nextElementSibling) {
+			const nextCheckbox = addedTask[i].nextElementSibling.querySelector(".input-checkbox");
+			if (!nextCheckbox.checked) {
+				addedTask[i].style.display = "none";
+			}
+		}
+	}
+}
+
+function selectCompleted() {
+	var addedTask = document.querySelectorAll(".added-task");
+	for (i = 0; i < addedTask.length; i++) {
+		if (addedTask[i].nextElementSibling) {
+			const nextCheckbox = addedTask[i].nextElementSibling.querySelector(".input-checkbox");
+			if (nextCheckbox.checked) {
+				addedTask[i].style.display = "none";
+			}
+		}
+	}
 }
 
 function deleteTasks() {

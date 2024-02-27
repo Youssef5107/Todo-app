@@ -15,9 +15,6 @@ function theme() {
 		ModeBtn[0].classList.add("active-theme");
 	}
 }
-
-
-
 var input = document.querySelector(".task-input");
 var content = localStorage.getItem("tasks") || "";
 var contentContainer = document.querySelector(".tasks-area");
@@ -44,7 +41,6 @@ input.addEventListener("keydown", function (pressedKey) {
             </div>    
        </div>
     `;
-
 		content += newRow;
 		contentContainer.innerHTML = content;
 		localStorage.setItem("tasks", content);
@@ -71,6 +67,7 @@ function whenHover() {
 			hoveredTask.remove(); // Remove the task area from the DOM
 			noOfItems = noOfItems - 1;
 			itemsleft.innerHTML = noOfItems;
+			localStorage.setItem("itemsNo", noOfItems);
 
 			// Update the table content in local storage
 			content = ""; // Clear the current table content

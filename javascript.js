@@ -1,10 +1,10 @@
 function theme() {
 	var body = document.querySelector("body")
 	body.classList.toggle("dark");
-	if (body.classList.contains("dark"))
-		body.style.backgroundImage = "url(images/bg-desktop-dark.jpg)"
-	else
+	if (!body.classList.contains("dark"))
 		body.style.backgroundImage = "url(images/bg-desktop-light.jpg)"
+	else
+		body.style.backgroundImage = "url(images/bg-desktop-dark.jpg)"
 	var ModeBtn = document.querySelectorAll(".theme-btn");
 	if (ModeBtn[0].classList.contains("active-theme")) {
 		ModeBtn[0].classList.remove("active-theme");
@@ -15,6 +15,7 @@ function theme() {
 		ModeBtn[0].classList.add("active-theme");
 	}
 }
+
 var input = document.querySelector(".task-input");
 var content = localStorage.getItem("tasks") || "";
 var contentContainer = document.querySelector(".tasks-area");
@@ -46,6 +47,7 @@ input.addEventListener("keydown", function (pressedKey) {
 		localStorage.setItem("tasks", content);
 		input.value = "";
 		whenHover()
+
 	}
 });
 
@@ -91,10 +93,12 @@ function chekcboxFun() {
 			if (checkbox[i].checked) {
 				task[i].style.color = "hsl(236, 9%, 61%)";
 				task[i].style.textDecoration = "line-through";
+				task[i].style.transition = "1s";
 			}
 			else {
 				task[i].style.color = "white";
 				task[i].style.textDecoration = "none";
+				task[i].style.transition = "1s";
 			}
 		}
 	}

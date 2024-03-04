@@ -22,7 +22,7 @@ var content = localStorage.getItem("tasks") || "";
 var contentContainer = document.querySelector(".tasks-area");
 contentContainer.innerHTML = content;
 var buttonContainer = document.querySelector(".button-container");
-var itemsleft = document.querySelector(".items-left"); xr
+var itemsleft = document.querySelector(".items-left");
 var noOfItems;
 var itemsNo = Number(localStorage.getItem("itemsNo")) || 0;
 itemsleft.innerHTML = itemsNo;

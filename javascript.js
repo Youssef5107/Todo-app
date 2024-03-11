@@ -27,30 +27,41 @@ var noOfItems;
 var itemsNo = Number(localStorage.getItem("itemsNo")) || 0;
 itemsleft.innerHTML = itemsNo;
 
+//
+var inputArr = [];
 input.addEventListener("keydown", function (pressedKey) {
-	if (pressedKey.key === "Enter" && input.value != "") {
-		itemsNo = Number(localStorage.getItem("itemsNo")) || 0;
-		noOfItems = itemsNo + 1;
-		localStorage.setItem("itemsNo", noOfItems);
-		itemsleft.innerHTML = noOfItems;
+	if (pressedKey.key !== "Enter" || input.value == "") return;
 
+
+	itemsNo = Number(localStorage.getItem("itemsNo")) || 0;
+	noOfItems = itemsNo + 1;
+	localStorage.setItem("itemsNo", noOfItems);
+	itemsleft.innerHTML = noOfItems;
+
+	inputArr.push(input.value)
+	content = '';
+	for (i = 0; i < inputArr.length; i++) {
 		var newRow = `
-        <div class="added-task">
+		<div class="added-task">
 			<input onclick="chekcboxFun()" type="checkbox" class="input-checkbox">
-            <div class="entered-task">${input.value}</div>  
-            <div class="close-btn-container">
-                <img class="close-btn" src="images/icon-cross.svg" alt="">
-            </div>    
-       </div>
-    `;
+			<div class="entered-task">${inputArr[i]}</div>  
+			<div class="close-btn-container">
+				<img class="close-btn" src="images/icon-cross.svg" alt="">
+			</div>    
+		</div>
+	`;
+
 		content += newRow;
 		contentContainer.innerHTML = content;
-		localStorage.setItem("tasks", content);
-		input.value = "";
-		whenHover()
+		console.log();
 
 	}
+
+	input.value = "";
+	whenHover()
+
 });
+
 
 function whenHover() {
 	var taskAreas = document.querySelectorAll(".added-task");
@@ -170,3 +181,28 @@ function deleteTasks() {
 	localStorage.setItem("itemsNo", noOfItems);
 	itemsleft.innerHTML = noOfItems;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var newRow = `
+//         <div class="added-task">
+// 			<input onclick="chekcboxFun()" type="checkbox" class="input-checkbox">
+//             <div class="entered-task">${input.value}</div>  
+//             <div class="close-btn-container">
+//                 <img class="close-btn" src="images/icon-cross.svg" alt="">
+//             </div>    
+//        </div>
+//     `;
+// 		content += newRow;
+// 		contentContainer.innerHTML = content;
+// 		localStorage.setItem("tasks", content);

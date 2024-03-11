@@ -1,3 +1,6 @@
+getSavedTasks()
+
+
 function theme() {
 	var body = document.querySelector("body")
 	body.classList.toggle("dark");
@@ -18,20 +21,37 @@ function theme() {
 
 var body = document.querySelector("body");
 var input = document.querySelector(".task-input");
-var content = localStorage.getItem("tasks") || "";
 var contentContainer = document.querySelector(".tasks-area");
-contentContainer.innerHTML = content;
 var buttonContainer = document.querySelector(".button-container");
 var itemsleft = document.querySelector(".items-left");
 var noOfItems;
 var itemsNo = Number(localStorage.getItem("itemsNo")) || 0;
 itemsleft.innerHTML = itemsNo;
 
-//
+function getSavedTasks() {
+	var contentContainer = document.querySelector(".tasks-area");
+	var inputArr = JSON.parse(localStorage.getItem('tasksArr'));
+	var content = '';
+	for (i = 0; i < inputArr.length; i++) {
+		var newRow = `
+		<div class="added-task">
+			<input onclick="chekcboxFun()" type="checkbox" class="input-checkbox">
+			<div class="entered-task">${inputArr[i]}</div>  
+			<div class="close-btn-container">
+				<img class="close-btn" src="images/icon-cross.svg" alt="">
+			</div>    
+		</div>
+	`;
+
+		content += newRow;
+		contentContainer.innerHTML = content;
+	}
+}
+
+
 var inputArr = [];
 input.addEventListener("keydown", function (pressedKey) {
 	if (pressedKey.key !== "Enter" || input.value == "") return;
-
 
 	itemsNo = Number(localStorage.getItem("itemsNo")) || 0;
 	noOfItems = itemsNo + 1;
@@ -53,7 +73,7 @@ input.addEventListener("keydown", function (pressedKey) {
 
 		content += newRow;
 		contentContainer.innerHTML = content;
-		console.log();
+		localStorage.setItem('tasksArr', JSON.stringify(inputArr));
 
 	}
 
@@ -180,29 +200,5 @@ function deleteTasks() {
 	noOfItems = 0;
 	localStorage.setItem("itemsNo", noOfItems);
 	itemsleft.innerHTML = noOfItems;
+	localStorage.removeItem('tasksArr');
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var newRow = `
-//         <div class="added-task">
-// 			<input onclick="chekcboxFun()" type="checkbox" class="input-checkbox">
-//             <div class="entered-task">${input.value}</div>  
-//             <div class="close-btn-container">
-//                 <img class="close-btn" src="images/icon-cross.svg" alt="">
-//             </div>    
-//        </div>
-//     `;
-// 		content += newRow;
-// 		contentContainer.innerHTML = content;
-// 		localStorage.setItem("tasks", content);
